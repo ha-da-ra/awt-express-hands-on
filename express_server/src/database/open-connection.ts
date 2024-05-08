@@ -3,6 +3,7 @@ import mongoose, { Schema, model, connect } from 'mongoose';
 async function openConnection() {
     try {
         await connect('mongodb://127.0.0.1:27017/test');
+        console.log('connected');
         mongoose.connection.on('disconnected', () => console.log('disconnected'));
     } catch (error) {
         handleError(error);
