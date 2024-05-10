@@ -1,0 +1,20 @@
+<head>
+    <style>
+    .person-box {
+        border: 2px solid #ccc;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+    </style>
+</head>
+
+<div class="person-box">
+    <h3> <%= person.name %></h3>
+    <p>Number: <%= person.number %></p>
+    <p>Dogs: </p>
+    <ul>
+        <% person.dogs.forEach(dog => { %>
+            <% include ./dog.ejs %>
+        <% }); %>
+    </ul>
+</div>
