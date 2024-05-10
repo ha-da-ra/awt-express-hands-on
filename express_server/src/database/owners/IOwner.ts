@@ -1,11 +1,11 @@
 
-interface IOwner {
+export interface IOwner {
     name: string;
     number?: number;
     dogs?: IDog[];
   }
   
-interface IDog {
+export interface IDog {
     name: string;
     allergies?: string;
     gender: string;

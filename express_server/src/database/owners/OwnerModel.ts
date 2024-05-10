@@ -1,4 +1,5 @@
 import { Schema,model } from "mongoose";
+import { IOwner } from "./IOwner";
 
 const ownerSchema = new Schema<IOwner>({
     name: String,

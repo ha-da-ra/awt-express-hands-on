@@ -9,14 +9,15 @@
         <h5>Here is a list of all users using the Dog's App</h5>
         <br>
         <ul>
-            <% people.forEach(person => { %>
-                <% include ./partials/person.ejs %>
-            <% }); %>
+            
+            <% owners.forEach(function(owner){ %>
+                <%- include('partials/person', {person: owner}); %>
+              <% }); %>
         </ul>
         <br>
     </h4>
 </div>
 
-<%- include('partials/footer') -%>
+<%- include('partials/footer') -%> 
 
 </html>

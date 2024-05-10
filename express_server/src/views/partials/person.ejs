@@ -13,8 +13,8 @@
     <p>Number: <%= person.number %></p>
     <p>Dogs: </p>
     <ul>
-        <% person.dogs.forEach(dog => { %>
-            <% include ./dog.ejs %>
-        <% }); %>
+        <% person.dogs.forEach(function(dog){ %>
+            <%- include('dog', {dog: dog}); %>
+          <% }); %>
     </ul>
 </div>
