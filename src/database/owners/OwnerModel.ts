@@ -3,7 +3,7 @@ import { IOwner } from "./IOwner";
 
 const ownerSchema = new Schema<IOwner>({
     name: String,
-    number: Number,
+    number: String,
     dogs: [{
         name: String,
         allergies: String,
