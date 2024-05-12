@@ -28,6 +28,10 @@ function createMockOwners() {
                 name: "Paolo",
                 allergies: "fleas",
                 gender: "male"
+            }, {
+                name: "Toby",
+                allergies: "none",
+                gender: "male"
             }
         ]
     }
@@ -47,6 +51,10 @@ export async function getAllOwners() {
             }, {
                 name: "Paolo",
                 allergies: "fleas",
+                gender: "male"
+            }, {
+                name: "Toby",
+                allergies: "none",
                 gender: "male"
             }
         ]
