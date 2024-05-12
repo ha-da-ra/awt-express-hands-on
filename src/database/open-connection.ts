@@ -1,10 +1,10 @@
 import mongoose, { Schema, model, connect } from 'mongoose';
+const dbPath = process.env.MONGODB ||"mongodb://127.0.0.1:27017/test";
 
-async function openConnection() {
+export async function openConnection() {
     try {
-        await connect('mongodb://127.0.0.1:27017/test');
+        await connect(dbPath);
         console.log('connected');
-        mongoose.connection.on('disconnected', () => console.log('disconnected'));
     } catch (error) {
         handleError(error);
     }
@@ -12,5 +12,5 @@ async function openConnection() {
 
 
 function handleError(error: unknown) {
-    //TODO: do some error handling
+    console.log('error during connect');
 }
