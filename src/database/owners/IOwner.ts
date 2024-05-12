@@ -1,7 +1,7 @@
 
 export interface IOwner {
     name: string;
-    number?: number;
+    number?: string;
     dogs?: IDog[];
   }
   
