@@ -3,15 +3,19 @@ import { IOwner } from "./IOwner";
 
 
 export function createOwner(newOwner: IOwner) {
-   Owner.create(newOwner);
+    return Owner.create(newOwner);
 }
 
 export function updateOwner(name: string, changedOwner: IOwner) {
-  Owner.updateOne({ name: name }, changedOwner);
+    return Owner.updateOne({ name: name }, changedOwner);
 }
 
 export function deleteOwner(name: string) {
-    Owner.deleteOne({ name: name });
+    return Owner.deleteOne({ name: name });
+}
+
+export function findOwner(name: string) {
+    return Owner.findOne({ name: name });
 }
 
 export function createMockOwners() {
