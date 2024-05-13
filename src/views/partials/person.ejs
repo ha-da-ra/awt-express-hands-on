@@ -4,9 +4,14 @@
         border: 2px solid #ccc;
         padding: 10px;
         margin: 0 10px 20px;
-        max-width: 300px;
+        width: 400px;
+        max-width: 500px;
         flex: 1 1 200px;
         box-sizing: border-box;
+    }
+    .dog-list{
+        list-style: none; /* Remove default list styles */
+        padding: 0;
     }
     </style>
 </head>
@@ -15,7 +20,7 @@
     <h3> <%= person.name %></h3>
     <p>Number: <%= person.number %></p>
     <p>Dogs: </p>
-    <ul>
+    <ul class="dog-list">
         <% person.dogs.forEach(function(dog){ %>
             <%- include('dog', {dog: dog}); %>
           <% }); %>

@@ -58,6 +58,25 @@ export async function getAllOwners() {
                 gender: "male"
             }
         ]
+    },
+    {
+        name: "John",
+        number: "+123 456 789",
+        dogs: [
+            {
+                name: "Jasmine",
+                allergies: "none",
+                gender: "female"
+            }, {
+                name: "Paolo",
+                allergies: "fleas",
+                gender: "male"
+            }, {
+                name: "Toby",
+                allergies: "none",
+                gender: "male"
+            }
+        ]
     }];
     return await Owner.find<IOwner>();
 }
