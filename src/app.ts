@@ -8,7 +8,7 @@ import * as middlewares from './middlewares';
 import MessageResponse from './interfaces/MessageResponse';
 import { getAllOwners } from './database/owners/owner-crud';
 import { ownerRouter } from './router/ownerRouter';
-
+import {urlencoded} from "body-parser";
 // routes
 
 require('dotenv').config();
@@ -18,15 +18,8 @@ require('dotenv').config();
 const app = express();
 
 
-
-
-
-// todo fix
-/*    
-app.get('*', function (req, res) {
-  res.redirect('/');
-});
-*/
+// Set up body-parser middleware
+app.use(urlencoded({ extended: false }));
 
 // add this into routes ??
 // view engine se
@@ -37,23 +30,16 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 
-// app.use(routes)
-
 
 
 // direct request handling
 app.get('/example', function (req, res) {
   res.send("Hello World");
 });
-app.get("/owners", ownerRouter);
+app.use("/owners", ownerRouter);
 
-/*
-app.get('/', function (req, res) {
-  res.redirect('/db');
-});
-*/
 
-app.get('/db', async (req, res) => {
+app.get('/', async (req, res) => {
   res.render('dashboard', { owners: await getAllOwners() });
 })
 

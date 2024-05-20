@@ -2,7 +2,7 @@ import { Owner } from "./OwnerModel";
 import { IOwner } from "./IOwner";
 
 
-export function createOwner(newOwner: IOwner) {
+export function addOwner(newOwner: IOwner) {
    // Owner.create(newOwner);
 }
 
