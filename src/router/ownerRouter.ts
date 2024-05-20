@@ -3,5 +3,5 @@ import { createOwner, getOwners } from '../controllers/ownerController';
 
 export const ownerRouter = Router();
 
-ownerRouter.get("/", getOwners);
-ownerRouter.post("/", createOwner);
+ownerRouter.get("/",    getOwners);
+ownerRouter.post("/",   createOwner);
