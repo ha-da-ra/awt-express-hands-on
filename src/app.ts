@@ -9,6 +9,7 @@ import MessageResponse from './interfaces/MessageResponse';
 import { getAllOwners } from './database/owners/owner-crud';
 import { ownerRouter } from './router/ownerRouter';
 import {urlencoded} from "body-parser";
+import { viewRouter } from './router/viewRouter';
 // routes
 
 require('dotenv').config();
@@ -36,12 +37,10 @@ app.use(express.json());
 app.get('/example', function (req, res) {
   res.send("Hello World");
 });
-app.use("/owners", ownerRouter);
 
+app.use("/owners",  ownerRouter);
+app.use("/",        viewRouter);
 
-app.get('/', async (req, res) => {
-  res.render('dashboard', { owners: await getAllOwners() });
-})
 
 
 
