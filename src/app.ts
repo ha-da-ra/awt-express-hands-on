@@ -7,9 +7,9 @@ import * as middlewares from './middlewares';
 //import router from './router';
 import MessageResponse from './interfaces/MessageResponse';
 import { getAllOwners } from './database/owners/owner-crud';
+import { ownerRouter } from './router/ownerRouter';
 
 // routes
-import router from "../src/router/routes";
 
 require('dotenv').config();
 
@@ -45,6 +45,7 @@ app.use(express.json());
 app.get('/example', function (req, res) {
   res.send("Hello World");
 });
+app.get("/owners", ownerRouter);
 
 /*
 app.get('/', function (req, res) {
@@ -57,8 +58,6 @@ app.get('/db', async (req, res) => {
 })
 
 
-
-app.use('/', router);
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
