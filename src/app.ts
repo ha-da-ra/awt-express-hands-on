@@ -3,38 +3,57 @@ import morgan from 'morgan';
 import cors from 'cors';
 import path from 'path';
 
-import * as middlewares from './middlewares';
-import router from './router';
-import MessageResponse from './interfaces/MessageResponse';
 import { getAllOwners } from './database/owners/owner-crud';
+import { ownerRouter } from './router/ownerRouter';
+import {urlencoded} from "body-parser";
+import { viewRouter } from './router/viewRouter';
+import { NextFunction, Request, Response } from "express";
+
 
 require('dotenv').config();
 
+
+// create instance
 const app = express();
 
-// view engine setup
+
+// Set up body-parser middleware
+app.use(urlencoded({ extended: false }));
+
+
+// view engine se
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
 
 app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 
 
-// app.get<{}, MessageResponse>('/', (req, res) => {
-//   res.json({
-//     message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄',
-//   });
-// });
-app.get('/', async (req, res) =>{
-  res.render('dashboard', { owners : await getAllOwners()});
-})
+// direct request handling
+app.get('/credits', function (req, res) {
+	res.render('credits');
+});
 
-app.use('/api/v1', router);
 
-app.use(middlewares.notFound);
-app.use(middlewares.errorHandler);
+// express routing
+app.use("/owners",  ownerRouter);
+app.use("/",        viewRouter);
+
+
+// Error Handling Middleware
+app.use(function(err: Error, req: Request, res: Response, next: NextFunction) {
+  console.error(err.stack);
+  res.status(500).send(`<html>
+  <head>
+    <title>Weiterleitung</title>
+    <meta http-equiv="refresh" content="3;url=/new-page" />
+  </head>
+  <body>
+    <h1>${err.message}</h1>
+    <p>You will be redirected in 3 seconds.</p>
+  </body>
+</html>`);
+});
 
 export default app;
-
