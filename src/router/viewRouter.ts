@@ -5,5 +5,5 @@ export const viewRouter = Router();
 
 viewRouter.get("/",         renderHomepage);
 viewRouter.get("/new",      renderAddOwner);
-//viewRouter.get("/credits",  renderCredits)
+//TODO: Credits
 viewRouter.get("*",         redirectToHomepage);
