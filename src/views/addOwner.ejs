@@ -1,38 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dog's App</title>
+    <title>Add Owner</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&display=swap" rel="stylesheet">
 
     <style>
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
         body {
             font-family: "Maven Pro", sans-serif;
-            padding: 0;
             margin: 0;
+            padding: 0;
         }
 
-        ::selection {
-            background-color: #a4bfd7;
+        ::selection{
+            background-color:#a4bfd7;
         }
 
-        #owner-btn-div {
+        .add-owner{
+            /* position: relative; */
             display: flex;
-            align-items: center;
-            justify-content: center;
+            justify-content:center;
+            align-items:flex-start;
+            padding-top: 20px;
+          
         }
 
+        input{
+            width: 30vw;
+            
+            padding: 15px;
+            border: 2px solid black;
+            border-radius: 10px;
+            font-size: medium;
+        }        
+        
         button {
             /* margin: 20px; */
             padding: 20px;
@@ -46,52 +49,38 @@
             cursor: pointer;
             border: 2px solid #0b5394;
             background-color: #a4bfd7;
-            animation: transition .2s;
+            animation: transition .2s;        
         }
 
         @keyframes transition {
             0% {
                 background-color: transparent;
             }
-
             100% {
                 background-color: #a4bfd7;
             }
         }
-    </style>
 
+        form{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+    </style>
 </head>
 
 <body>
     <%- include('partials/header') -%>
-    <h2 style="text-align:center;">Welcome to Dog's App</h2>
 
-    <h4>
-        <%= locals.user %>
-    </h4> <!-- Show the actual user logged in-->
-
-    <br>
-
-    <h4 style="text-align:center;">Here is a list of all users using the Dog's App</h4>
-
-    <br>
-
-    <div class="container">
-        <% owners.forEach(function(owner){ %>
-            <%- include('partials/person', {person: owner}); %>
-                <% }); %>
-    </div>
-
-
-    <div id="owner-btn-div">
-        <a href="/new">
-            <button>
-                Add Owner
-            </button>
-        </a>
+    <div class="add-owner">
+        <form action="../owners" method="post">
+            <input type="text" name="name" placeholder="Owner Name">
+            <input type="text" name="number" placeholder="Mobilenumber">
+            <button>Add Owner</button>
+        </form>
     </div>
 
     <%- include('partials/footer') -%>
 </body>
-
-</html>
