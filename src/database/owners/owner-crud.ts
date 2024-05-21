@@ -3,7 +3,7 @@ import { IOwner } from "./IOwner";
 
 
 export function addOwner(newOwner: IOwner) {
-   return Owner.create(newOwner);
+   
 }
 
 export function updateOwner(name: string, changedOwner: IOwner) {
@@ -44,6 +44,43 @@ export async function createMockOwners() {
 
 
 export async function getAllOwners() {
-    return await Owner.find<IOwner>();
+    return [{
+        name: "William",
+        number: "+123 456 789",
+        dogs: [
+            {
+                name: "Jasmine",
+                allergies: "none",
+                gender: "female"
+            }, {
+                name: "Paolo",
+                allergies: "fleas",
+                gender: "male"
+            }, {
+                name: "Toby",
+                allergies: "none",
+                gender: "male"
+            }
+        ]
+    },
+    {
+        name: "John",
+        number: "+123 456 789",
+        dogs: [
+            {
+                name: "Jasmine",
+                allergies: "none",
+                gender: "female"
+            }, {
+                name: "Paolo",
+                allergies: "fleas",
+                gender: "male"
+            }, {
+                name: "Toby",
+                allergies: "none",
+                gender: "male"
+            }
+        ]
+    }];
 }
 

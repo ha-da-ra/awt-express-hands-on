@@ -9,7 +9,7 @@ app.listen(port, () => {
   /* eslint-disable no-console */
   console.log(`Listening: http://localhost:${port}`);
   openConnection();
-  createMockOwners();
+  //createMockOwners();
   /* eslint-enable no-console */
 });
 
