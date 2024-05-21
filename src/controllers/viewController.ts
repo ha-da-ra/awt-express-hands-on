@@ -16,3 +16,7 @@ export function renderCredits(req: Request, res: Response){
     res.render('credits');
 }
 */
+
+export function redirectToHomepage(req: Request, res: Response){
+    res.redirect('/');
+}

@@ -7,6 +7,8 @@ import { getAllOwners } from './database/owners/owner-crud';
 import { ownerRouter } from './router/ownerRouter';
 import {urlencoded} from "body-parser";
 import { viewRouter } from './router/viewRouter';
+import { NextFunction, Request, Response } from "express";
+
 
 require('dotenv').config();
 
@@ -29,10 +31,6 @@ app.use(express.json());
 
 
 // direct request handling
-app.get('/example', function (req, res) {
-  res.render("Hello World");
-});
-
 app.get('/credits', function (req, res) {
 	res.render('credits');
 });
@@ -43,10 +41,19 @@ app.use("/owners",  ownerRouter);
 app.use("/",        viewRouter);
 
 
-/*
-app.use(middlewares.notFound);
-app.use(middlewares.errorHandler);
-*/
-
+// Error Handling Middleware
+app.use(function(err: Error, req: Request, res: Response, next: NextFunction) {
+  console.error(err.stack);
+  res.status(500).send(`<html>
+  <head>
+    <title>Weiterleitung</title>
+    <meta http-equiv="refresh" content="3;url=/new-page" />
+  </head>
+  <body>
+    <h1>${err.message}</h1>
+    <p>You will be redirected in 3 seconds.</p>
+  </body>
+</html>`);
+});
 
 export default app;
