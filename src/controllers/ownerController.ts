@@ -22,10 +22,8 @@ export async function createOwner(req: Request, res:Response, next: NextFunction
             console.log(newOwner);
             await addOwner(newOwner);
             res.status(201).redirect('/');
-        } else {
-            throw new Error('Name is missing. Please try again!');
-        }
-    } catch (error) { 
-        next(error);    
+        } 
+    } catch (error) {    
+        //TODO: Error handling
     }
 }
