@@ -3,19 +3,22 @@ import { IOwner } from "./IOwner";
 
 
 export function addOwner(newOwner: IOwner) {
-   // Owner.create(newOwner);
+   return Owner.create(newOwner);
 }
 
 function updateOwner(name: string, changedOwner: IOwner) {
-    //Owner.updateOne({ name: name }, changedOwner);
+   return Owner.updateOne({ name: name }, changedOwner);
 }
 
-function deleteOwner(name: string) {
-    //Owner.deleteOne({ name: name });
+export function deleteOwner(name: string) {
+    return Owner.deleteOne({ name: name });
 }
 
-function createMockOwners() {
+export function findOwner(name: string) {
+    return Owner.findOne({ name: name });
+}
 
+export function createMockOwners() {
     const mockOwners = {
         name: "William",
         number: "+123 456 789",
@@ -35,7 +38,7 @@ function createMockOwners() {
             }
         ]
     }
-    //Owner.create(mockOwners);
+    return Owner.create(mockOwners);
 }
 
 
