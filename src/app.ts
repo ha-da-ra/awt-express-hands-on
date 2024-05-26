@@ -31,15 +31,14 @@ app.use(express.json());
 
 
 // direct request handling
-app.get('/credits', function (req, res) {
-  res.render('credits');
-});
+// app.get('/credits', function (req, res) {
+//   res.render('credits');
+// });
 
 
 // express routing
 app.use("/owners", ownerRouter);
 app.use("/", viewRouter);
-
 
 //TODO: Error Handling Middleware
 
