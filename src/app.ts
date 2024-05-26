@@ -41,7 +41,6 @@ app.use("/owners", ownerRouter);
 app.use("/", viewRouter);
 
 
-//TODO: Error Handling Middleware
 
 export default app;
 
